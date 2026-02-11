@@ -7,9 +7,6 @@ permissions:
 on:
   workflow_call:
     inputs:
-      ksu_variant:
-        required: true
-        type: string
       ksu_commit:
         required: false
         type: string
@@ -43,11 +40,11 @@ jobs:
           sub_level: "128"
           os_patch_level: "2025-03"
           variant: "Hakan"
-        - android_version: "android14"
-          kernel_version: "6.1"
-          sub_level: "68"
-          os_patch_level: "2024-03"
-          variant: "Duchamp"
+        - android_version: "android12"
+          kernel_version: "5.10"
+          sub_level: "226"
+          os_patch_level: "2024-11"
+          variant: "Neyugn"
 
     uses: ./.github/workflows/build.yml
     secrets: inherit
@@ -57,6 +54,5 @@ jobs:
       sub_level: ${{ matrix.sub_level }}
       os_patch_level: ${{ matrix.os_patch_level }}
       variant: ${{ matrix.variant }}
-      ksu_variant: ${{ inputs.ksu_variant }}
       ksu_commit: ${{ inputs.ksu_commit }}
       build_bypass: ${{ inputs.build_bypass }}

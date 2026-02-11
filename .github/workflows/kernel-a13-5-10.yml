@@ -7,9 +7,6 @@ permissions:
 on:
   workflow_call:
     inputs:
-      ksu_variant:
-        required: true
-        type: string
       ksu_commit:
         required: false
         type: string
@@ -100,9 +97,6 @@ jobs:
           os_patch_level: "2025-10"
         - sub_level: "246"
           os_patch_level: "2026-01"
-        # LTS meta
-        - sub_level: "X"
-          os_patch_level: "lts"
     uses: ./.github/workflows/build.yml
     secrets: inherit
     with:
@@ -110,6 +104,5 @@ jobs:
       kernel_version: "5.10"
       sub_level: ${{ matrix.sub_level }}
       os_patch_level: ${{ matrix.os_patch_level }}
-      ksu_variant: ${{ inputs.ksu_variant }}
       ksu_commit: ${{ inputs.ksu_commit }}
       build_bypass: ${{ inputs.build_bypass }}
